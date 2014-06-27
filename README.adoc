@@ -5,7 +5,7 @@ Matt Stine <matt.stine@gmail.com>
 
 This lab will guide you through building a BASIC continuous delivery pipeline using Jenkins, Artifactory, and Cloud Foundry.
 
-== Steps
+== Setup Steps
 
 . FORK (using the GitHub UI) and clone the citytest repo:
 +
@@ -14,3 +14,55 @@ This lab will guide you through building a BASIC continuous delivery pipeline us
 $ git clone https://github.com/<YOUR_GIT_USERNAME>/citytest
 $ cd citytest
 ----
+
+. Login to your Jenkins instance at CloudBees.
+
+. Navigate to +Manage Jenkins > Manage Plugins > Available+.
+
+. Install the following plugins:
++
+* Gradle
+* Mask Passwords
+* Extensible Parameter Plugin
+* Artifactory Plugin
+* Parameterized Trigger Plugin
++
+When you do, tell Jenkins to restart after plugin install.
+
+. Login to your Aritfactory Online instance.
+
+. Navigate to +Admin > Security > General+.
+
+. Activate encryption for passwords.
+
+. Next navigate to +Admin > Security > Users+.
+
+. Create a new user named +deployer+ with a password of your choosing.
+
+. Once created, navigate to +Admin > Security > Permissions+.
+
+. +Edit+ the +Anything+ permissions target.
+
+. Select the +Users+ tab, and check all permissions for your new user.
+
+. Logout, and then log back in as your new user.
+
+. Click on the account name in the top right hand corner of the screen.
+
+. Enter your password and click +Unlock+.
+
+. Copy your encrypted password and paste it somewhere safe.
+
+. Next, go back to Jenkins. And navigate to +Manage Jenkins > Configure System+.
+
+. Find Artifactory, and add a new Artifactory server:
++
+URL:: `https://<<your artifactory hostname>>.artifactoryonline.com/<<your artifactory hostname>>` (e.g. +https://mattstine.artifactoryonline.com/mattstine+)
+Username:: the user you created in artifactory
+Password:: the encrypted password you copied a moment ago
+
+. Click +Apply+. Then click +Test Connection+ and ensure things are working.
+
+== Create the Pipeline Steps
+
+TODO
