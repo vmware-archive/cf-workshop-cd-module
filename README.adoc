@@ -7,7 +7,7 @@ This lab will guide you through building a BASIC continuous delivery pipeline us
 
 == Setup Steps
 
-. FORK (using the GitHub UI) and clone the citytest repo:
+. FORK (using the GitHub UI) and clone the [citytest repo](https://github.com/mstine/citytest):
 +
 [source,bash]
 ----
