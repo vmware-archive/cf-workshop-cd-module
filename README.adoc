@@ -63,6 +63,42 @@ Password:: the encrypted password you copied a moment ago
 
 . Click +Apply+. Then click +Test Connection+ and ensure things are working.
 
-== Create the Pipeline Steps
+== Create the Initial Build Job
+
+. Navigate back to Jenkins Home.
+
+. Click +New Job+, give it the name +citytest+ and select ``Build a free-style software project.'' Then click +OK+.
+
+. Under +Source Code Management+, select +Git+, and supply your repository URL (e.g. `https://github.com/<YOUR_GIT_USERNAME>/citytest`).
+
+. Under +Build Triggers+, select +Poll SCM+ and provide the string +* * * * *+.
+
+. Under +Build Environment+, select +Gradle-Artifactory Integration+.
++
+* Select your Artifactory server.
+* Select +libs-releases_local+ as the +Publishing Respoitory+.
+* Ensure the following are checked:
+** Capture and publish build info
+** Allow promotion of non-staged builds
+** Publish artifacts to Artifactory
+** Publish Ivy descriptors
+
+. Under +Build+, add a +Invoke Gradle Script+ build step.
++
+Gradle Version:: +build environment+
+Switches:: +-Pbuildversion=$BUILD_NUMBER+
+Tasks:: +clean assemble+
+
+. Save the config and try running the build by clicking ``Build Now''. Ensure that you see the artifact in Artifactory.
+
+== Create the Deploy Job
+
+TODO
+
+== Create the Trigger
+
+TODO
+
+== Make a Commit and Watch the Pipeline Run
 
 TODO
