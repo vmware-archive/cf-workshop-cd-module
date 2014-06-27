@@ -1,0 +1,16 @@
+= CF Workshop Continuous Delivery Lab
+Matt Stine <matt.stine@gmail.com>
+
+== Intro
+
+This lab will guide you through building a BASIC continuous delivery pipeline using Jenkins, Artifactory, and Cloud Foundry.
+
+== Steps
+
+. FORK (using the GitHub UI) and clone the citytest repo:
++
+[source,bash]
+----
+$ git clone https://github.com/<YOUR_GIT_USERNAME>/citytest
+$ cd citytest
+----
