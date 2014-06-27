@@ -23,7 +23,7 @@ $ cd citytest
 +
 * Gradle
 * Mask Passwords
-* Extensible Parameter Plugin
+* Extensible Choice Parameter Plugin
 * Artifactory Plugin
 * Parameterized Trigger Plugin
 +
