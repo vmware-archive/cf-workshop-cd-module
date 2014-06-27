@@ -85,7 +85,8 @@ Password:: the encrypted password you copied a moment ago
 
 . Under +Build+, add a +Invoke Gradle Script+ build step.
 +
-Gradle Version:: +build environment agnostic artifact+
+Gradle Version:: gradle-latest
+Build Step Description:: +build environment agnostic artifact+
 Switches:: +-Pbuildversion=$BUILD_NUMBER+
 Tasks:: +clean assemble+
 
@@ -127,7 +128,7 @@ return getAllBuildNumbers(buildJob)
 * Select your Artifactory server.
 * Select +ext-releases_local+ as the +Target Respoitory+.
 +
-Resolved Artifacts:: +libs-releases-local:citytest/${BUILD_VERSION}/*=>artifacts+
+Resolved Artifacts:: `libs-releases-local:citytest/${BUILD_VERSION}/*=>artifacts`
 +
 * Ensure +Capture and Publish Build Info+ is checked.
 
