@@ -85,7 +85,7 @@ Password:: the encrypted password you copied a moment ago
 
 . Under +Build+, add a +Invoke Gradle Script+ build step.
 +
-Gradle Version:: +build environment+
+Gradle Version:: +build environment agnostic artifact+
 Switches:: +-Pbuildversion=$BUILD_NUMBER+
 Tasks:: +clean assemble+
 
