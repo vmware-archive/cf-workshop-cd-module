@@ -137,7 +137,7 @@ Resolved Artifacts:: `libs-releases-local:citytest/${BUILD_VERSION}/*=>artifacts
 Name:: +CF_PASSWORD+
 Password:: Your Pivotal Web Services Password
 
-. Under +Build+, add a +Execute Shell+ build step.
+. Under +Build+, add a +Execute Shell+ build step. Replace in the script below +uniquetoken+ with something like your username!
 +
 Command::
 +
@@ -154,8 +154,8 @@ ROUTE_VERSION=$(echo "${BUILD_VERSION}" | cut -d"." -f1-3 | tr '.' '-')
 echo "Deployed Version: $DEPLOYED_VERSION"
 echo "Route Version: $ROUTE_VERSION"
 
-./cf push "cities-$BUILD_VERSION" -i 1 -m 512M -n "cities-$ROUTE_VERSION-dev" -d cfapps.io -p artifacts/citytest-${BUILD_VERSION}.jar --no-manifest
-./cf map-route "cities-${BUILD_VERSION}" cfapps.io -n cities-dev
+./cf push "cities-$BUILD_VERSION" -i 1 -m 512M -n "cities-$ROUTE_VERSION-uniquetoken" -d cfapps.io -p artifacts/citytest-${BUILD_VERSION}.jar --no-manifest
+./cf map-route "cities-${BUILD_VERSION}" cfapps.io -n cities-uniquetoken
 ./cf scale cities-${BUILD_VERSION} -i 2
 if [ ! -z "$DEPLOYED_VERSION" -a "$DEPLOYED_VERSION" != " " -a "$DEPLOYED_VERSION" != "cities-${BUILD_VERSION}" ]; then
   echo "Performing zero-downtime cutover to $BUILD_VERSION"
@@ -164,7 +164,7 @@ if [ ! -z "$DEPLOYED_VERSION" -a "$DEPLOYED_VERSION" != " " -a "$DEPLOYED_VERSIO
     if [ ! -z "$line" -a "$line" != " " -a "$line" != "cities-${BUILD_VERSION}" ]; then
       echo "Scaling down, unmapping and removing $line"
       ./cf scale "$line" -i 1
-      ./cf unmap-route "$line" cfapps.io -n cities-dev
+      ./cf unmap-route "$line" cfapps.io -n cities-uniquetoken
       ./cf delete "$line" -f
     else
       echo "Skipping $line"
